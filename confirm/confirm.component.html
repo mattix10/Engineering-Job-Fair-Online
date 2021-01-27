@@ -1,0 +1,11 @@
+<div class="fixed top-70 z-50 inset-0 w-full h-full">
+  <div class="confirmTopAnimation w-96 top-0 left-1/2 transform translate-x-1/2 translate-y-1/2 absolute bg-white rounded-lg mx-auto shadow-md ">
+    <div class="py-2 px-4 my-2">
+      <div class="text-gray-700 p-2 mt-4">Czy na pewno chcesz usunąć {{name}}?</div>
+      <div class="bg-red-300">
+        <button class="w-1/5 block float-right py-2 my-2 border border-gray-600  text-gray-600 focus:outline-none focus:shadow-outline rounded-lg" (click)="close()">Anuluj</button>
+        <button class="w-1/5 block float-right py-2 my-2 mx-2 bg-red-500  text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="confirm()">Tak</button>
+      </div>
+    </div>
+  </div>
+</div>

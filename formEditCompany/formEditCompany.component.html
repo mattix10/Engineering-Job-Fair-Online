@@ -1,0 +1,27 @@
+<form [formGroup]="formEditCompany" class="mx-2 px-4 " (ngSubmit)="sendForm(user.email, this.formEditCompany.value)">
+
+    <div class="py-2">
+      <label>Status firmy:</label>
+      <select  formControlName="companyStatus" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">   
+        <option *ngFor="let status of companyStatus" [ngValue]="status" >{{status}}</option>  
+      </select>
+    </div>
+
+    <div class="py-2">
+      <label>Dzień uczestnictwa:</label>
+      <select  formControlName="dayOfParticipation" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">     
+        <option *ngFor="let day of dayOfParticipation" [ngValue]="day">{{day}}</option>
+      </select>
+      <!-- <p *ngIf="formAddCompany.get('dayOfParticipation').hasError('required')">Zaznacz dzień uczestnictwa</p> -->
+    </div>
+
+    <!-- <div class="grid grid-cols-2 gap-6 mb-3 py-2"> -->
+      <div class="w-full mt-4">
+          <button type="submit" class="w-auto py-2 bg-blue-700 w-full text-white focus:outline-none focus:shadow-outline rounded-lg">Zapisz zmiany</button>
+      </div>
+      <div class="w-full mt-2 mb-4">
+        <button  type="button" class="w-auto py-2 bg-red-600 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="hide(user.id)">Anuluj</button>
+      </div>
+    <!-- </div> -->
+
+</form>

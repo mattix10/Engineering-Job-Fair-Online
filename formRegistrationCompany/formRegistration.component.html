@@ -1,0 +1,37 @@
+<form [formGroup]="formAddCompany" class="mx-2 px-4" (ngSubmit)="sendForm(user.email, this.formAddCompany.value)">
+    <div class="py-2">
+      <label>Utwórz Hasło:</label>
+      <input  formControlName="password" type="password" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">
+    </div>
+
+    <div class="py-2">
+      <label>Powtórz hasło:</label>
+      <input formControlName="confirmPassword" type="password" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">
+      <p class="text-red-600" *ngIf="formAddCompany.get('confirmPassword').hasError('NoPasswordMatch')">Podane hasła nie są identyczne</p>
+    </div>
+
+    <div class="py-2">
+      <label>Status firmy:</label>
+      <select  formControlName="companyStatus" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">   
+        <option *ngFor="let status of companyStatus" [ngValue]="status" >{{status}}</option>  
+      </select>
+    </div>
+
+    <div class="py-2">
+      <label>Dzień uczestnictwa:</label>
+      <select  formControlName="dayOfParticipation" class="w-full p-2 rounded-lg border-solid border-gray-400 border-2">     
+        <option *ngFor="let day of dayOfParticipation" [ngValue]="day">{{day}}</option>
+      </select>
+      <!-- <p *ngIf="formAddCompany.get('dayOfParticipation').hasError('required')">Zaznacz dzień uczestnictwa</p> -->
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 py-2 mb-3 ">
+      <div class="w-full">
+        <button  type="button" class="w-auto py-2 bg-red-600 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="hide(user.id)">Anuluj</button>
+      </div>
+      <div class="w-full">
+        <button type="submit" class="w-auto py-2 bg-blue-700 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="sendForm(user.email, formAddCompany.value)">Zapisz zmiany</button>
+      </div>
+    </div>
+
+</form>

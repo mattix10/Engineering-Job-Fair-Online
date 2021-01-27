@@ -1,0 +1,20 @@
+
+<div class="p-4 md:p-10 md:pt-0 xl:w-full">
+  <h2 class="title-primary mt-10">Firmy do rejestracji</h2>
+    </div>
+    <div *ngIf="users?.length == 0 ">Brak firm do rejestracji</div>
+    <div *ngFor="let user of getUsers(); let i = index" class="xl:w-1/2 lg:w-8/12 flex bg-white mx-2 md:mx-10 my-4 p-3 rounded-lg border-gray-300 border-1 shadow-lg border-solid">  
+      <div class=" overflow-hidden w-1/2 flex align-items-center ">
+        <div class="font-semibold p-2 text-gray-800">{{user.userProfile.companyName}}</div>
+      </div>
+      <div class=" overflow-hidden w-1/2">
+        <button type="button" class="btn btn-primary float-right mr-2 py-2 focus:outline-none" 
+        [attr.data-target]="'#' + user.id" (click)="show(user.id)" #closeAddExpenseModal>
+        Edytuj profil 
+        </button>
+      </div>
+          <app-company-editor class="relative" [user]="user" [showDetails]="showDetails" [mode]="mode"></app-company-editor>
+</div>
+<div *ngIf="users != undefined">
+  <app-pagination [length]="users.length" (changePageSize)="changePageSize($event)" (changeSelectedPage)="changeSelectedPage($event)"></app-pagination>
+</div>

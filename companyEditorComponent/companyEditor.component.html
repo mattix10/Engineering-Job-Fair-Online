@@ -1,0 +1,90 @@
+<div id="{{user.id}}" class="modal hidden z-50 fixed w-full h-full inset-0 bg-gray-500 bg-opacity-50">
+  <div class="modalAnimation w-10/12 sm:w-96 md:w-96 lg:w-96 xl:w-96 left-1/2 top-1/2 transform translate-x-1/2 translate-y-1/2 border-gray-600 absolute w-auto lg:w-1/4 bg-white mx-auto shadow-xl rounded-xlg">
+
+<!-- Show CompanyDetails  -->
+  <div *ngIf="showDetails == true">
+
+    <div class=" px-4 mx-2">
+      <div class="flex items-center justify-center p-2 mx-auto mt-4 ">
+        <img class=" h-16 w-16 lg:h-20 lg:w-20 " src="../../assets/img/logo.png">
+      </div>
+
+      <div class="pb-4">
+        <h2 class="font-semibold text-center text-3xl">{{user.userProfile.companyName}}</h2>
+      </div>
+      
+      <div class="py-2 flex ">
+        <div class="flex-1">Adres e-mail: </div>
+        <div class="flex-1  text-purple-500 text-center">{{user.email}}</div>
+      </div>
+
+      <div class="py-2 flex">
+        <div class="flex-1">Status: </div>
+        <div class="flex-1 text-purple-500 text-center">{{user.userProfile.companyStatus}}</div>
+      </div>
+
+      <div class="py-2 flex">
+        <div class="flex-1">Dzień uczestnictwa: </div>
+        <div class="flex-1 text-purple-500 text-center">{{user.userProfile.dayOfParticipation}}</div>
+      </div>
+
+      <div class="w-full mt-4">
+        <button type="submit" class="w-auto py-2 bg-teal-600 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="setEdit()">Edytuj</button>
+      </div>
+
+      <div class="w-full mt-2">
+        <button  type="button" class="w-auto py-2 bg-orange-500 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="setPasswordMode()" >Zmień hasło</button>
+      </div>
+
+      <!-- <div class="grid grid-cols-2 gap-6 mt-2 mb-3 py-2"> -->
+
+      <div class="w-full mb-4 mt-2">
+        <button  type="button" class="w-auto py-2 bg-red-600 w-full text-white focus:outline-none focus:shadow-outline rounded-lg" (click)="hide(user.id)" >Anuluj</button>
+      </div>
+
+      <!-- </div> -->
+
+    </div>
+  </div>
+<!-- Show registry panel, edit data or change password -->
+
+  <div *ngIf="showDetails == false">
+  
+    <div *ngIf="mode == 'REGISTRY'" class="pt-2 sm:pt-4 lg:pt-4">
+      <h2 class="font-semibold text-center text-3xl">Zarejestruj firmę</h2>
+    </div>
+    <div *ngIf="mode == 'EDIT'" class="pt-2 sm:pt-4 lg:pt-4">
+      <h2 class="font-semibold text-center text-3xl">Edytuj firmę</h2>
+    </div>
+    <div *ngIf="mode == 'PASSWORD'" class="pt-2 sm:pt-4 lg:pt-4">
+      <h2 class="font-semibold text-center text-3xl">Zmień hasło</h2>
+    </div>
+
+    <div class="py-2 px-4 ">   
+      <div class="flex items-center justify-center">
+        <div *ngIf="mode == 'EDIT'">
+          <img class=" my-2 h-16 w-16 lg:h-20 lg:w-20 lg:mr-4" src="../../assets/img/logo.png">
+        </div>
+        <div class="text-center ">
+          <h2 class="text-lg font-semibold">{{user.userProfile.companyName}}</h2>
+            <div class="text-purple-500">{{user.userProfile.contactPerson}}</div>
+            <div class="break-all ml-2 text-center text-gray-600">{{user.email}}</div>
+            <div class="text-gray-600">{{user.userProfile.phoneNumber}}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mode == 'REGISTRY'">
+      <app-formRegistration [user]="user"></app-formRegistration>
+    </div>
+    <div *ngIf="mode == 'EDIT'">
+      <app-formEditCompany [user]="user"></app-formEditCompany>
+    </div>
+    <div *ngIf="mode == 'PASSWORD'">
+      <app-formChangePasswordCompany [user]="user"></app-formChangePasswordCompany>
+    </div>
+    
+  </div>
+
+</div>
+
+

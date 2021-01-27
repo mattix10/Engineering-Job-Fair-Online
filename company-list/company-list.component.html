@@ -1,0 +1,25 @@
+<div class="xl:w-full p-4 md:p-10 md:pt-0 ">
+  <h2 class="title-primary mt-10">Firmy zarejestrowane</h2>
+</div>
+<div *ngFor="let user of getUsers()" class=" xl:w-1/2 lg:w-8/12 flex mx-2 md:mx-10 my-4 p-3 bg-white rounded-lg shadow-lg border-1 border-gray-300 border-solid">
+  <div class=" overflow-hidden w-2/5 md:w-3/5 lg:w-3/5 xl:w-3/5 flex align-items-center ">
+    <div class="font-medium p-2 text-gray-700">{{user.userProfile.companyName}}</div>
+  </div>
+  <div class="w-3/5 md:w-2/5 lg:w-2/5 xl:w-2/5 overflow-hidden">
+    <button type="button" class=" w-2/5 py-2 mx-2 float-right bg-red-500 text-white focus:outline-none rounded-lg" 
+    [attr.data-target]="'#' + user.id" (click)="displayConfirmWindow(user.userProfile.companyName)">
+    Usuń
+    </button>
+    <button type="button" class=" w-2/5 py-2 float-right bg-teal-500 text-white text-center focus:outline-none rounded-lg" 
+    [attr.data-target]="'#' + user.id" (click)="showCompanyDetails(user.id)">
+    Podgląd
+    </button>
+  </div>
+    <app-company-editor class="relative" [user]="user" [showDetails]="showDetails" [mode]="mode"></app-company-editor>
+</div>
+<div *ngIf="users != undefined">
+  <app-pagination [length]="users.length" (changePageSize)="changePageSize($event)" (changeSelectedPage)="changeSelectedPage($event)"></app-pagination>
+</div>
+<div *ngIf="showConfirmWindow == true">
+  <app-confirm></app-confirm>
+</div>

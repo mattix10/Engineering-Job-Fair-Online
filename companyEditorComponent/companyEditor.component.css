@@ -1,0 +1,9 @@
+.modalAnimation {
+  animation-name: animatetop;
+  animation-duration: 0.6s
+}
+
+@keyframes animatetop {
+  from {top:-200px; opacity:0}
+  to {top:50%; opacity:1}
+}

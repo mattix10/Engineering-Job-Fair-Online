@@ -1,0 +1,13 @@
+<div class="py-2 mb-6 mx-4 text-center xl:w-1/2 lg:w-8/12">
+  <div class="block my-2">
+    Ilość na stronie:
+    <select class="px-2 cursor-pointer text-primary outline-none focus:shadow-outline rounded-lg" [value]="itemsPerPage" (change)="changeSize($event.target.value)">
+      <option value="3" selected>3</option>
+      <option value="6">6</option>
+      <option value="9">9</option>
+    </select>
+  </div>
+  <div class="block">
+    <a *counter="let page of pageCount" [class.active]="isActive" (click)="changePage(page)" class="relative inline-flex items-center px-3 py-1 border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:text-white hover:bg-teal-500 cursor-pointer active:bg-teal-500">{{page}}</a>
+  </div>
+</div>
